@@ -1,21 +1,14 @@
-package com.stefan.prak07
+package com.stefan.prak08
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.stefan.prak07.Api.Article
-import com.stefan.prak07.Api.ArticlesJson
-import com.stefan.prak07.Api.NewsApi
-import com.stefan.prak07.Api.Source
-import com.stefan.prak07.adapter.NewsArticleAdapter
-import com.stefan.prak07.databinding.ActivityMainBinding
-//import com.stefan.prak07.entity.Article
-//import com.stefan.prak07.entity.ArticleResponse
+import com.stefan.prak08.Api.Article
+import com.stefan.prak08.Api.ArticlesJson
+import com.stefan.prak08.Api.NewsApi
+import com.stefan.prak08.adapter.NewsArticleAdapter
+import com.stefan.prak08.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

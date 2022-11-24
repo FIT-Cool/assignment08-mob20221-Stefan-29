@@ -8,20 +8,19 @@
     android:layout_marginBottom="@dimen/card_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/card_margin">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/card_margin">
 
 
         <Button
 
-        android:id ="@+id/button"
-        android:layout_width="@dimen/button_w"
-        android:layout_height="@dimen/button_h"
-        android:text="NN"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:background="@drawable/circle_button"
-        />
+            android:id="@+id/button"
+            android:layout_width="@dimen/button_w"
+            android:layout_height="@dimen/button_h"
+            android:text="NN"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:background="@drawable/circle_button" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +39,7 @@
                 android:text="@string/title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_published_date"
                 android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                 android:text="@string/published_date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_author"
                 android:layout_width="match_parent"
@@ -54,6 +55,7 @@
                 android:text="@string/author"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
@@ -65,4 +67,4 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>

@@ -1,12 +1,9 @@
-package com.stefan.prak07
+package com.stefan.prak08
 
 import android.os.Bundle
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import com.stefan.prak07.Api.Article
-import com.stefan.prak07.databinding.ActivityScrollingBinding
+import com.stefan.prak08.Api.Article
+import com.stefan.prak08.databinding.ActivityScrollingBinding
 
 /**
  * @author Stefanus - 2072013, Vina Anjelina - 2072022

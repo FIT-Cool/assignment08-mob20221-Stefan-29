@@ -1,6 +1,5 @@
-package com.stefan.prak07.Api
+package com.stefan.prak08.Api
 
-import com.stefan.prak07.Api.ArticlesJson
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

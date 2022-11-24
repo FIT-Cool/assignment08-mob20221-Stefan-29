@@ -1,4 +1,4 @@
-package com.stefan.prak07.Api
+package com.stefan.prak08.Api
 
 data class ArticlesJson(
     val articles: ArrayList<Article>,

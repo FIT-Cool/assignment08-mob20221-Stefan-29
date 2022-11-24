@@ -1,4 +1,4 @@
-package com.stefan.prak07.Api
+package com.stefan.prak08.Api
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

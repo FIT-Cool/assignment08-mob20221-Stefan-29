@@ -1,4 +1,4 @@
-package com.stefan.prak07
+package com.stefan.prak08
 
 import org.junit.Test
 

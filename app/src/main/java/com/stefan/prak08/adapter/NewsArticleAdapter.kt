@@ -1,14 +1,13 @@
-package com.stefan.prak07.adapter
+package com.stefan.prak08.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.stefan.prak07.R
-import com.stefan.prak07.databinding.NewsItemBinding
-import com.stefan.prak07.Api.Article
+import com.stefan.prak08.R
+import com.stefan.prak08.databinding.NewsItemBinding
+import com.stefan.prak08.Api.Article
 /**
  * @author Stefanus - 2072013
  * **
