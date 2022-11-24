@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var articles : ArrayList<Article>
     private lateinit var newsArticleAdapter: NewsArticleAdapter
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://newsapi.org/v2/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,11 +38,11 @@ class MainActivity : AppCompatActivity() {
         newsArticleAdapter = NewsArticleAdapter(articles)
 
         //click to view more data
-//        newsArticleAdapter.setArticleDataListener(object: NewsArticleAdapter.ArticleDataListener{
-//            override fun articleItemClicked(article: Article) {
-//                ShowMoreArticleData(article)
-//            }
-//        })
+        newsArticleAdapter.setArticleDataListener(object: NewsArticleAdapter.ArticleDataListener{
+            override fun articleItemClicked(article: Article) {
+                ShowMoreArticleData()
+            }
+        })
 
         binding.rvNews.layoutManager = LinearLayoutManager(this@MainActivity)
         binding.rvNews.adapter = newsArticleAdapter
@@ -53,10 +58,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchArticleData(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://newsapi.org/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
         val service = retrofit.create(NewsApi::class.java)
         val call = service.getCurrentNewsData("Twitter", "f0c081794a864a8ca72ebbebc350efc9") //Getting Twitter Related News
         call?.enqueue(object : Callback<ArticlesJson?> {
@@ -75,32 +76,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//   private fun ShowMoreArticleData(article: Article){
-//       val retrofit = Retrofit.Builder()
-//           .baseUrl("https://newsapi.org/v2/")
-//           .addConverterFactory(GsonConverterFactory.create())
-//           .build()
-//       val service = retrofit.create(NewsApi::class.java)
-//       val call = service.getCurrentNewsData("Twitter", "f0c081794a864a8ca72ebbebc350efc9") //Getting Twitter Related News
-//       call?.enqueue(object : Callback<ArticlesJson?> {
-//           override fun onResponse(call: Call<ArticlesJson?>, response: Response<ArticlesJson?>) {
+   private fun ShowMoreArticleData(){
+       val service = retrofit.create(NewsApi::class.java)
+       val call = service.getCurrentNewsData("Twitter", "f0c081794a864a8ca72ebbebc350efc9") //Getting Twitter Related News
+       call?.enqueue(object : Callback<ArticlesJson?> {
+           override fun onResponse(call: Call<ArticlesJson?>, response: Response<ArticlesJson?>) {
+               Toast.makeText(this@MainActivity, response.body()?.articles?.get(0)?.content.toString(),
+                   Toast.LENGTH_SHORT).show()
+
 //               response.body()!!.articles?.let {
 //                   if (article.source.id == ){
 //                       val intent = Intent (this@MainActivity,ScrollingActivity::class.java)
 //                       intent.putExtra("article", article)
 //                       startActivity(intent)
-//                   }
-//
-//               }
-//               newsArticleAdapter.notifyItemChanged(0)
-//           }
-//           override fun onFailure(call: Call<ArticlesJson?>, t: Throwable) {
-//               Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
-//
-//           }
-//
-//       })
-//  }
+           }
+
+
+           override fun onFailure(call: Call<ArticlesJson?>, t: Throwable) {
+               Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+
+           }
+
+       })
+  }
 }
 
 
