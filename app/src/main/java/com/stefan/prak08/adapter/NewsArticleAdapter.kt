@@ -1,5 +1,6 @@
 package com.stefan.prak08.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,7 @@ class NewsArticleAdapter(val articles: ArrayList<Article>) : Adapter<NewsArticle
             binding.tvPublishedDate.text = article.publishedAt
             binding.tvAuthor.text = article.author
             binding.tvDescription.text = article.description
+            binding.button.text = article.author.subSequence(0,1)
         }
     }
 

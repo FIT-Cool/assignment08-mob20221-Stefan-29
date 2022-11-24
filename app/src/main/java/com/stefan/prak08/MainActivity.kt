@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         //click to view more data
         newsArticleAdapter.setArticleDataListener(object: NewsArticleAdapter.ArticleDataListener{
             override fun articleItemClicked(article: Article) {
-                ShowMoreArticleData()
+                ShowMoreArticleData(article)
             }
         })
 
@@ -76,12 +76,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-   private fun ShowMoreArticleData(){
+   private fun ShowMoreArticleData(article: Article){
        val service = retrofit.create(NewsApi::class.java)
        val call = service.getCurrentNewsData("Twitter", "f0c081794a864a8ca72ebbebc350efc9") //Getting Twitter Related News
        call?.enqueue(object : Callback<ArticlesJson?> {
            override fun onResponse(call: Call<ArticlesJson?>, response: Response<ArticlesJson?>) {
-               Toast.makeText(this@MainActivity, response.body()?.articles?.get(0)?.content.toString(),
+               response.body()!!.articles?.let {
+                   articles.addAll(it)
+               }
+
+               Toast.makeText(this@MainActivity, article.content,
                    Toast.LENGTH_SHORT).show()
 
 //               response.body()!!.articles?.let {
@@ -100,5 +104,7 @@ class MainActivity : AppCompatActivity() {
        })
   }
 }
+
+
 
 
