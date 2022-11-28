@@ -9,7 +9,7 @@ import retrofit2.http.Query
  * **
  */
 
-//https://newsapi.org/v2/everything?q=Apple&from=2022-11-20&sortBy=popularity&apiKey=f0c081794a864a8ca72ebbebc350efc9
+//https://newsapi.org/v2/everything?q=Twitter&from=2022-11-20&sortBy=popularity&apiKey=f0c081794a864a8ca72ebbebc350efc9
 
 interface NewsApi {
     @GET("everything") //get annotation

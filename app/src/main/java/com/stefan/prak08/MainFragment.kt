@@ -47,6 +47,7 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        articles = ArrayList()
         newsArticleAdapter = NewsArticleAdapter(articles)
         //click to view more data
         newsArticleAdapter.setArticleDataListener(object : NewsArticleAdapter.ArticleDataListener {
@@ -65,7 +66,7 @@ class MainFragment : Fragment() {
         fragmentMainBinding.rvNews.layoutManager = LinearLayoutManager(activity)
         fragmentMainBinding.rvNews.adapter = newsArticleAdapter
         fragmentMainBinding.srLayout.setOnRefreshListener {
-            fetchArticleData()
+            this.fetchArticleData()
             fragmentMainBinding.srLayout.isRefreshing = false
         }
         return fragmentMainBinding.root
@@ -125,8 +126,7 @@ class MainFragment : Fragment() {
 //               Toast.makeText(this@MainActivity, article.content,
 //                   Toast.LENGTH_SHORT).show()
 
-
-                val intent = Intent(activity, ScrollingActivity::class.java)
+                val intent = Intent(activity, ScrollingFragment::class.java)
                 intent.putExtra("news",article)
                 startActivity(intent)
             }

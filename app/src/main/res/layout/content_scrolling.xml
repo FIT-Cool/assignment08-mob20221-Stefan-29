@@ -88,9 +88,6 @@
             android:layout_height="wrap_content"
             android:text="@string/open_web"/>
 
-
-
-
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

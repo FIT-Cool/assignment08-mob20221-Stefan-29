@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="@dimen/app_padding"
+    android:paddingEnd="@dimen/app_padding"
     tools:context=".MainActivity"
-    android:id="@+id/fragmentContainerView">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sr_layout"
@@ -17,4 +19,4 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/news_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</androidx.fragment.app.FragmentContainerView>
+</FrameLayout>
