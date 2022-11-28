@@ -11,6 +11,12 @@ import com.stefan.prak08.Api.Article
 import com.stefan.prak08.databinding.ActivityScrollingBinding
 import com.stefan.prak08.databinding.FragmentScrollingBinding
 
+/**
+ * @author Stefanus - 2072013, Vina Anjelina - 2072022
+ * **
+ */
+
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
