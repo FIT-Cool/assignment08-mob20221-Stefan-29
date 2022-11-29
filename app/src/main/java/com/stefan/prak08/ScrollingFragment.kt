@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.stefan.prak08.Api.Article
-import com.stefan.prak08.databinding.ActivityScrollingBinding
 import com.stefan.prak08.databinding.FragmentScrollingBinding
 
 /**
@@ -33,7 +32,6 @@ class ScrollingFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
        fragmentScrollingBinding = FragmentScrollingBinding.inflate(inflater, container, false)
-
 //        setContentView(fragmentScrollingbinding.root)
 
 //        setSupportActionBar(findViewById(R.id.toolbar))
@@ -58,20 +56,27 @@ class ScrollingFragment : Fragment() {
 
     override fun onStart() {
     super.onStart()
-    val news = activity?.intent?.getParcelableExtra<Article>("news")
-    if (news != null) {
-        fragmentScrollingBinding.toolbarLayout.title = news.title
-        fragmentScrollingBinding.icContent.tvPublishedDate?.text = news.publishedAt
-        fragmentScrollingBinding.icContent.tvAuthor?.text = news.author
-        fragmentScrollingBinding.icContent.tvDescription?.text = news.description
-        fragmentScrollingBinding.icContent.tvContent?.text = news.content
-        fragmentScrollingBinding.icContent.tvUrl?.setOnClickListener {
-            val webUrl = Uri.parse(news.url);
-            //implicit intent
-            val webIntent = Intent(Intent.ACTION_VIEW, webUrl);
+    if (arguments !=null && requireArguments().containsKey("my_article")){
+        val news : Article? = requireArguments().getParcelable("my_article")
+        if (news!=null){
+            fragmentScrollingBinding.toolbarLayout.title = news.title
+            fragmentScrollingBinding.icContent.tvPublishedDate?.text = news.publishedAt
+            fragmentScrollingBinding.icContent.tvAuthor?.text = news.author
+            fragmentScrollingBinding.icContent.tvDescription?.text = news.description
+            fragmentScrollingBinding.icContent.tvContent?.text = news.content
+            fragmentScrollingBinding.icContent.tvUrl?.setOnClickListener {
+                val webUrl = Uri.parse(news.url);
+                //implicit intent
+                val webIntent = Intent(Intent.ACTION_VIEW, webUrl);
                 startActivity(webIntent)
 
+            }
+
         }
+    //val news = activity?.intent?.getParcelableExtra<Article>("news")
+    //if (news != null) {
+
+        //}
     }
 
 }

@@ -52,7 +52,15 @@ class MainFragment : Fragment() {
         //click to view more data
         newsArticleAdapter.setArticleDataListener(object : NewsArticleAdapter.ArticleDataListener {
             override fun articleItemClicked(article: Article) {
-                showMoreArticleData(article)
+                val bundle : Bundle = Bundle()
+                bundle.putParcelable("my_article", article)
+                val scrollingFragment : ScrollingFragment = ScrollingFragment.newInstance()
+                scrollingFragment.arguments = bundle
+            //showMoreArticleData(article)
+                val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
+                fragmentTransaction?.replace(R.id.fragment_container, scrollingFragment)
+                fragmentTransaction?.commit()
+
             }
         })
 

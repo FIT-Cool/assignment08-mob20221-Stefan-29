@@ -11,11 +11,12 @@ import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Article(
+    val ARTICLE_PARCEL : String = "my_article",
     val author: String,
     val content: String,
     val description: String,
     val publishedAt: String,
-    //val source: @RawValue Source,
+    val source: Source,
     val title: String,
     val url: String,
     val urlToImage: String
