@@ -52,13 +52,8 @@ class MainFragment : Fragment() {
         //click to view more data
         newsArticleAdapter.setArticleDataListener(object : NewsArticleAdapter.ArticleDataListener {
             override fun articleItemClicked(article: Article) {
-                val bundle : Bundle = Bundle()
-                bundle.putParcelable("my_article", article)
-                val scrollingFragment : ScrollingFragment = ScrollingFragment.newInstance()
-                scrollingFragment.arguments = bundle
-            //showMoreArticleData(article)
                 val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.fragment_container, scrollingFragment)
+                fragmentTransaction?.replace(R.id.fragment_container, ScrollingFragment.newInstance(article))
                 fragmentTransaction?.commit()
 
             }
@@ -121,30 +116,4 @@ class MainFragment : Fragment() {
 
     }
 
-    private fun showMoreArticleData(article: Article) {
-        val service = retrofit.create(NewsApi::class.java)
-        val call = service.getCurrentNewsData("Twitter",
-            "f0c081794a864a8ca72ebbebc350efc9") //Getting Twitter Related News
-        call?.enqueue(object : Callback<ArticlesJson?> {
-            override fun onResponse(call: Call<ArticlesJson?>, response: Response<ArticlesJson?>) {
-                response.body()!!.articles?.let {
-                    articles.addAll(it)
-                }
-
-//               Toast.makeText(this@MainActivity, article.content,
-//                   Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(activity, ScrollingFragment::class.java)
-                intent.putExtra("news",article)
-                startActivity(intent)
-            }
-
-
-            override fun onFailure(call: Call<ArticlesJson?>, t: Throwable) {
-                Toast.makeText(activity, t.message, Toast.LENGTH_SHORT).show()
-
-            }
-
-        })
-    }
 }

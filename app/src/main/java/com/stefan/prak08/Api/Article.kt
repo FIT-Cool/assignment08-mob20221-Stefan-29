@@ -11,7 +11,6 @@ import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Article(
-    val ARTICLE_PARCEL : String = "my_article",
     val author: String,
     val content: String,
     val description: String,
